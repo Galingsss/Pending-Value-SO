@@ -471,129 +471,129 @@ export default function App() {
       {/* 2. Main Dashboard Content (Calculated Height: 100vh - 68px) */}
       <main className="flex-1 h-[calc(100vh-68px)] p-4 flex gap-4 min-h-0 bg-slate-50">
         
-        {/* LEFT COLUMN: Key Metrics & Summary Table (54% width) */}
-        <section className="w-[54%] flex flex-col gap-4 min-h-0 h-full">
+        {/* LEFT COLUMN: Key Metrics & Summary Table (58% width, expanded for better prominence) */}
+        <section className="w-[58%] flex flex-col gap-4 min-h-0 h-full">
           
           {/* Metrics Stack */}
           <div className="grid grid-cols-3 gap-3 shrink-0">
             {/* Metric 1: Total SO Pending Count */}
-            <div className="bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col justify-between shadow-sm relative overflow-hidden hover:border-blue-200 transition-all col-span-1">
-              <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
-                <ShoppingBag className="w-16 h-16 text-blue-600" />
+            <div className="bg-slate-900 border-2 border-slate-950 text-white rounded-2xl p-4 flex flex-col justify-between shadow-md relative overflow-hidden col-span-1">
+              <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+                <ShoppingBag className="w-16 h-16 text-blue-400" />
               </div>
-              <span className="text-[10px] font-bold text-blue-600 tracking-wider uppercase font-sans">
-                TOTAL SO PENDING
+              <span className="text-[11px] font-black text-blue-400 tracking-widest uppercase font-sans">
+                TOTAL SO COUNT
               </span>
               <div className="mt-2.5 flex items-baseline gap-1">
-                <span className="text-2xl font-extrabold tracking-tight text-slate-800 font-mono">
+                <span className="text-3xl font-black tracking-tight text-white font-mono leading-none">
                   {totalPendingCount.toLocaleString('id-ID')}
                 </span>
-                <span className="text-[10px] text-slate-500 font-medium font-sans">Order</span>
+                <span className="text-xs text-slate-400 font-bold font-sans">Orders</span>
               </div>
             </div>
 
             {/* Metric 2: Total Pending SO Value (Besar & Lengkap) */}
-            <div className="bg-emerald-50/40 border border-emerald-200 rounded-2xl p-4 flex flex-col justify-between shadow-xs relative overflow-hidden hover:border-emerald-300 transition-all col-span-2">
-              <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
-                <Database className="w-16 h-16 text-emerald-650" />
+            <div className="bg-[#0f5132] border-2 border-emerald-400 text-white rounded-2xl p-5 flex flex-col justify-between shadow-lg relative overflow-hidden col-span-2">
+              <div className="absolute top-0 right-0 p-4 opacity-15 pointer-events-none">
+                <Database className="w-16 h-16 text-emerald-300" />
               </div>
-              <span className="text-[10px] font-bold text-emerald-700 tracking-wider uppercase font-sans">
-                TOTAL VALUE PENDING SO (LENGKAP)
+              <span className="text-[11px] font-black text-emerald-300 tracking-widest uppercase font-sans">
+                ★ TOTAL VALUE PENDING SO (LENGKAP - HIGHLIGHT) ★
               </span>
               <div className="mt-1 flex flex-col">
-                <span className="text-2xl sm:text-[27px] font-black tracking-tight text-emerald-600 font-mono leading-tight truncate" title={formatRupiah(totalPendingValue)}>
+                <span className="text-3xl sm:text-[35px] font-black tracking-normal text-emerald-200 font-mono leading-none truncate" title={formatRupiah(totalPendingValue)}>
                   {formatRupiah(totalPendingValue)}
                 </span>
-                <span className="text-xs text-slate-500 font-medium font-sans mt-0.5">
-                  Ringkasan Ringkas: <span className="font-bold">{formatRupiahCompact(totalPendingValue)}</span>
+                <span className="text-xs text-emerald-100 font-bold font-sans mt-2.5 flex items-center gap-1.5">
+                  Ringkasan Ringkas: <span className="font-mono bg-emerald-900/80 px-2 py-0.5 rounded border border-emerald-700 text-emerald-200">{formatRupiahCompact(totalPendingValue)}</span>
                 </span>
               </div>
             </div>
           </div>
 
           {/* Table Table Card */}
-          <div className="flex-1 bg-white border border-slate-200 shadow-sm rounded-2xl flex flex-col overflow-hidden min-h-0 relative">
-            <div className="px-4 py-3.5 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white">
+          <div className="flex-1 bg-white border-2 border-slate-300 shadow-md rounded-2xl flex flex-col overflow-hidden min-h-0 relative">
+            <div className="px-5 py-4 border-b-2 border-slate-200 flex items-center justify-between shrink-0 bg-slate-50">
               <div className="flex items-center gap-2">
-                <Database className="h-4 w-4 text-blue-600" />
-                <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-                  Ringkasan Data Pending SO
+                <Database className="h-5 w-5 text-slate-900" />
+                <h3 className="text-sm font-black text-slate-950 uppercase tracking-widest">
+                  RINGKASAN DATA PENDING SALES ORDER (SO)
                 </h3>
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 text-slate-600 rounded font-semibold">
-                {sortedTableData.length} Rows
+              <span className="text-xs font-mono px-3 py-1 bg-slate-950 text-white rounded-md font-black">
+                {sortedTableData.length} ROWS
               </span>
             </div>
 
             {/* Scrollable table container */}
-            <div className="flex-1 overflow-y-auto min-h-0 text-xs">
+            <div className="flex-1 overflow-y-auto min-h-0 text-sm">
               <table className="w-full text-left border-collapse">
-                <thead className="bg-[#f8fafc] text-slate-500 sticky top-0 z-10 border-b border-slate-200 text-[10px] font-bold tracking-wider font-sans uppercase">
+                <thead className="bg-slate-150 text-slate-900 sticky top-0 z-10 border-b-2 border-slate-350 text-[11px] font-black tracking-widest font-sans uppercase">
                   <tr>
                     <th 
                       onClick={() => handleSort('tanggal')}
-                      className="px-4 py-2.5 cursor-pointer hover:bg-slate-100 transition-colors select-none"
+                      className="px-4 py-3 cursor-pointer hover:bg-slate-200 transition-colors select-none"
                     >
-                      <div className="flex items-center gap-1">
-                        Tanggal
-                        <ArrowUpDown className={`h-3 w-3 ${sortField === 'tanggal' ? 'text-blue-600' : 'text-slate-400'}`} />
+                      <div className="flex items-center gap-1.5 text-black">
+                        TANGGAL
+                        <ArrowUpDown className={`h-3.5 w-3.5 ${sortField === 'tanggal' ? 'text-blue-700' : 'text-slate-500'}`} />
                       </div>
                     </th>
                     <th 
                       onClick={() => handleSort('kategori')}
-                      className="px-3 py-2.5 cursor-pointer hover:bg-slate-100 transition-colors select-none text-center"
+                      className="px-3 py-3 cursor-pointer hover:bg-slate-200 transition-colors select-none text-center"
                     >
-                      <div className="flex items-center justify-center gap-1">
-                        Kategori
-                        <ArrowUpDown className={`h-3 w-3 ${sortField === 'kategori' ? 'text-blue-600' : 'text-slate-400'}`} />
+                      <div className="flex items-center justify-center gap-1.5 text-black">
+                        KATEGORI
+                        <ArrowUpDown className={`h-3.5 w-3.5 ${sortField === 'kategori' ? 'text-blue-700' : 'text-slate-500'}`} />
                       </div>
                     </th>
                     <th 
                       onClick={() => handleSort('count')}
-                      className="px-3 py-2.5 cursor-pointer hover:bg-slate-100 transition-colors select-none text-right"
+                      className="px-3 py-3 cursor-pointer hover:bg-slate-200 transition-colors select-none text-right"
                     >
-                      <div className="flex items-center justify-end gap-1">
-                        Count
-                        <ArrowUpDown className={`h-3 w-3 ${sortField === 'count' ? 'text-blue-600' : 'text-slate-400'}`} />
+                      <div className="flex items-center justify-end gap-1.5 text-black">
+                        COUNT
+                        <ArrowUpDown className={`h-3.5 w-3.5 ${sortField === 'count' ? 'text-blue-700' : 'text-slate-500'}`} />
                       </div>
                     </th>
                     <th 
                       onClick={() => handleSort('value')}
-                      className="px-4 py-2.5 cursor-pointer hover:bg-slate-100 transition-colors select-none text-right"
+                      className="px-4 py-3 cursor-pointer hover:bg-slate-200 transition-colors select-none text-right"
                     >
-                      <div className="flex items-center justify-end gap-1">
-                        Nilai Pending
-                        <ArrowUpDown className={`h-3 w-3 ${sortField === 'value' ? 'text-blue-600' : 'text-slate-400'}`} />
+                      <div className="flex items-center justify-end gap-1.5 text-black">
+                        NILAI PENDING
+                        <ArrowUpDown className={`h-3.5 w-3.5 ${sortField === 'value' ? 'text-blue-700' : 'text-slate-500'}`} />
                       </div>
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-slate-650 font-mono text-[11px]">
+                <tbody className="divide-y-2 divide-slate-200 text-black font-mono text-[13px] font-bold">
                   {sortedTableData.length > 0 ? (
                     sortedTableData.map((row, index) => {
                       return (
                         <tr 
                           key={`${row.tanggal}-${row.kategori}-${index}`} 
-                          className="hover:bg-slate-50 transition-colors duration-150"
+                          className="hover:bg-slate-100/80 transition-colors duration-150 border-b border-slate-200"
                         >
-                          <td className="px-4 py-2 text-slate-700 font-semibold">{row.tanggal}</td>
-                          <td className="px-3 py-2 text-center">
-                            <span className={`px-2.5 py-0.5 rounded-full font-extrabold text-[10px] border shadow-xs ${
+                          <td className="px-4 py-2.5 text-black font-black text-sm">{row.tanggal}</td>
+                          <td className="px-3 py-2.5 text-center">
+                            <span className={`px-3 py-1 rounded-md font-black text-xs border shadow-xs ${
                               row.kategori.trim().toUpperCase() === '1P' 
-                                ? 'bg-blue-50 border-blue-200 text-blue-700' 
+                                ? 'bg-blue-600 text-white border-blue-700' 
                                 : row.kategori.trim().toUpperCase() === '2P' 
-                                  ? 'bg-purple-50 border-purple-200 text-purple-700' 
+                                  ? 'bg-purple-600 text-white border-purple-700' 
                                   : row.kategori.trim().toUpperCase() === '3P' 
-                                    ? 'bg-amber-50 border-amber-200 text-amber-700' 
-                                    : 'bg-slate-100 border-slate-200 text-slate-600'
+                                    ? 'bg-amber-600 text-white border-amber-700' 
+                                    : 'bg-slate-800 text-white border-slate-900'
                             }`}>
                               {row.kategori}
                             </span>
                           </td>
-                          <td className="px-3 py-2 text-right font-semibold text-slate-700">
+                          <td className="px-3 py-2.5 text-right font-black text-slate-900 text-sm">
                             {row.count.toLocaleString('id-ID')}
                           </td>
-                          <td className="px-4 py-2 text-right font-bold text-emerald-600">
+                          <td className="px-4 py-2.5 text-right font-black text-emerald-800 text-base">
                             {formatRupiah(row.value)}
                           </td>
                         </tr>
@@ -601,8 +601,8 @@ export default function App() {
                     })
                   ) : (
                     <tr>
-                      <td colSpan={4} className="px-4 py-12 text-center text-slate-400 font-sans">
-                        <AlertCircle className="h-6 w-6 text-slate-400 mx-auto mb-2" />
+                      <td colSpan={4} className="px-4 py-16 text-center text-slate-500 font-sans font-black text-base">
+                        <AlertCircle className="h-8 w-8 text-slate-500 mx-auto mb-2" />
                         No data matches selected filters.
                       </td>
                     </tr>
@@ -619,18 +619,19 @@ export default function App() {
           </div>
         </section>
 
-        {/* RIGHT COLUMN: Interactive List of Daily Trends (46% width) */}
-        <section className="w-[46%] h-full flex flex-col gap-4 min-h-0">
+        {/* RIGHT COLUMN: Interactive List of Daily Trends (42% width) */}
+        <section className="w-[42%] h-full flex flex-col gap-4 min-h-0">
           
-          <div className="flex-1 bg-white border border-slate-200 shadow-sm rounded-2xl p-5 flex flex-col min-h-0 relative">
-            <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2 shrink-0">
-              <span className="w-2 h-2 rounded-full bg-blue-600" />
-              Tren Nilai Pending per Hari
+          <div className="flex-1 bg-white border-2 border-slate-300 shadow-md rounded-2xl p-5 flex flex-col min-h-0 relative">
+            <h3 className="text-sm font-black text-slate-950 uppercase tracking-widest mb-2 flex items-center gap-2 shrink-0">
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse" />
+              TREN NILAI PENDING PER HARI
             </h3>
             
-            <p className="text-[11px] text-slate-500 font-sans mb-3 shrink-0">
+            <p className="text-xs text-slate-700 font-bold mb-3 shrink-0">
               Menampilkan urutan akumulasi nilai backlog outstanding per tanggal secara kronologis.
-            </p>            {/* Compact non-scroll container designed to divide space evenly so it perfectly fits the box size */}
+            </p>
+            {/* Compact non-scroll container designed to divide space evenly so it perfectly fits the box size */}
             <div className="flex-1 flex flex-col justify-between gap-1.5 min-h-0 overflow-hidden">
               {dailyTrends.length > 0 ? (
                 dailyTrends.map((item, index) => {
@@ -638,38 +639,38 @@ export default function App() {
                   return (
                     <div 
                       key={`${item.tanggal}-${index}`}
-                      className="px-3 py-2 bg-slate-50/70 hover:bg-slate-100/50 border border-slate-100 rounded-xl transition-all flex flex-col justify-center flex-1 min-h-0"
+                      className="px-4 py-2 bg-slate-50 border-2 border-slate-200 hover:bg-slate-100 rounded-xl transition-all flex flex-col justify-center flex-1 min-h-0"
                     >
-                      <div className="flex justify-between items-center text-[11px] text-slate-800">
-                        <span className="font-bold text-slate-700 font-mono tracking-tight flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 bg-slate-400 rounded-full" />
+                      <div className="flex justify-between items-center text-xs text-slate-950">
+                        <span className="font-black text-black font-mono tracking-tight flex items-center gap-1.5 text-sm">
+                          <span className="w-2 h-2 bg-slate-950 rounded-full shrink-0" />
                           {item.tanggal}
                         </span>
                         <div className="text-right">
-                          <span className="font-extrabold text-emerald-600 font-mono block text-[13px] leading-tight">
+                          <span className="font-black text-slate-950 font-mono block text-base leading-tight">
                             {formatRupiah(item.value)}
                           </span>
                         </div>
                       </div>
                       
                       {/* Interactive sleek progress indicator */}
-                      <div className="w-full bg-slate-100/70 h-1.5 rounded-full overflow-hidden relative mt-1 shrink-0">
+                      <div className="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden relative mt-1 shrink-0 border border-slate-350">
                         <div 
-                          className="bg-emerald-500 h-full rounded-full transition-all duration-550"
+                          className="bg-emerald-600 h-full rounded-full transition-all duration-550"
                           style={{ width: `${percentage}%` }}
                         />
                       </div>
                       
-                      <div className="flex justify-between text-[9px] text-slate-400 font-sans mt-1 leading-none">
-                        <span>Kontribusi Relatif: {percentage}%</span>
-                        <span>{item.count.toLocaleString('id-ID')} Total SO Pending</span>
+                      <div className="flex justify-between text-[10px] text-slate-800 font-mono font-bold mt-1 leading-none">
+                        <span>Porsi Kontribusi: {percentage}%</span>
+                        <span className="text-black font-black">{item.count.toLocaleString('id-ID')} SO PENDING</span>
                       </div>
                     </div>
                   );
                 })
               ) : (
-                <div className="py-20 text-center text-slate-400 font-sans">
-                  <AlertCircle className="h-6 w-6 text-slate-400 mx-auto mb-2" />
+                <div className="py-24 text-center text-slate-500 font-sans font-black">
+                  <AlertCircle className="h-8 w-8 text-slate-500 mx-auto mb-1" />
                   No trend records found matching selected filters.
                 </div>
               )}
