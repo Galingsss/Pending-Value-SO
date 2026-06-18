@@ -1,0 +1,6 @@
+{
+  "name": "Dashboard Pending Sales Order",
+  "description": "Real-time dashboard for monitoring pending Sales Orders (SO), optimized for TV or display monitors with auto-refresh and responsive charts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
