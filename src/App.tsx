@@ -151,6 +151,11 @@ export default function App() {
   const totalPendingCount = filteredData.reduce((sum, item) => sum + item.count, 0);
   const totalPendingValue = filteredData.reduce((sum, item) => sum + item.value, 0);
 
+  // Category values (1P, 2P, 3P)
+  const total1PValue = filteredData.filter(d => d.kategori.trim().toUpperCase() === '1P').reduce((sum, item) => sum + item.value, 0);
+  const total2PValue = filteredData.filter(d => d.kategori.trim().toUpperCase() === '2P').reduce((sum, item) => sum + item.value, 0);
+  const total3PValue = filteredData.filter(d => d.kategori.trim().toUpperCase() === '3P').reduce((sum, item) => sum + item.value, 0);
+
   // Sorting Handler
   const handleSort = (field: 'tanggal' | 'kategori' | 'count' | 'value') => {
     if (sortField === field) {
@@ -484,30 +489,60 @@ export default function App() {
               <span className="text-[11px] font-black text-blue-400 tracking-widest uppercase font-sans">
                 TOTAL SO COUNT
               </span>
-              <div className="mt-2.5 flex items-baseline gap-1">
-                <span className="text-3xl font-black tracking-tight text-white font-mono leading-none">
+              <div className="mt-2.5 flex items-baseline gap-1.5">
+                <span className="text-5xl font-black tracking-tight text-white font-mono leading-none">
                   {totalPendingCount.toLocaleString('id-ID')}
                 </span>
-                <span className="text-xs text-slate-400 font-bold font-sans">Orders</span>
+                <span className="text-xs text-slate-300 font-black font-sans uppercase tracking-wider">Orders</span>
               </div>
             </div>
 
-            {/* Metric 2: Total Pending SO Value (Besar & Lengkap) */}
-            <div className="bg-[#0f5132] border-2 border-emerald-400 text-white rounded-2xl p-5 flex flex-col justify-between shadow-lg relative overflow-hidden col-span-2">
+            {/* Metric 2: Total Pending SO Value (Highlighted & Big) */}
+            <div className="bg-slate-900 border-2 border-slate-950 text-white rounded-2xl p-4 flex flex-col justify-between shadow-lg relative overflow-hidden col-span-2">
               <div className="absolute top-0 right-0 p-4 opacity-15 pointer-events-none">
-                <Database className="w-16 h-16 text-emerald-300" />
+                <Database className="w-16 h-16 text-emerald-400" />
               </div>
-              <span className="text-[11px] font-black text-emerald-300 tracking-widest uppercase font-sans">
-                ★ TOTAL VALUE PENDING SO (LENGKAP - HIGHLIGHT) ★
+              <span className="text-[11px] font-black text-emerald-400 tracking-widest uppercase font-sans">
+                ★ TOTAL VALUE PENDING SO (HIGHLIGHT) ★
               </span>
-              <div className="mt-1 flex flex-col">
-                <span className="text-3xl sm:text-[35px] font-black tracking-normal text-emerald-200 font-mono leading-none truncate" title={formatRupiah(totalPendingValue)}>
+              <div className="mt-2 flex flex-col">
+                <span className="text-4xl sm:text-[38px] font-black tracking-normal text-white font-mono leading-none truncate" title={formatRupiah(totalPendingValue)}>
                   {formatRupiah(totalPendingValue)}
                 </span>
-                <span className="text-xs text-emerald-100 font-bold font-sans mt-2.5 flex items-center gap-1.5">
-                  Ringkasan Ringkas: <span className="font-mono bg-emerald-900/80 px-2 py-0.5 rounded border border-emerald-700 text-emerald-200">{formatRupiahCompact(totalPendingValue)}</span>
-                </span>
               </div>
+            </div>
+          </div>
+
+          {/* New Row: 1P, 2P, and 3P Category Breakdown (Large & Bold for Wall TV) */}
+          <div className="grid grid-cols-3 gap-3 shrink-0">
+            {/* 1P Block */}
+            <div className="bg-slate-900 border-2 border-slate-950 text-white rounded-2xl p-4 shadow-md text-center flex flex-col justify-center relative overflow-hidden">
+              <span className="text-[11px] font-black text-blue-400 uppercase tracking-widest block mb-1">
+                ★ TOTAL VALUE 1P
+              </span>
+              <span className="text-2xl font-black font-mono tracking-wide leading-none block text-white mt-1">
+                {formatRupiah(total1PValue)}
+              </span>
+            </div>
+
+            {/* 2P Block */}
+            <div className="bg-slate-900 border-2 border-slate-950 text-white rounded-2xl p-4 shadow-md text-center flex flex-col justify-center relative overflow-hidden">
+              <span className="text-[11px] font-black text-purple-400 uppercase tracking-widest block mb-1">
+                ★ TOTAL VALUE 2P
+              </span>
+              <span className="text-2xl font-black font-mono tracking-wide leading-none block text-white mt-1">
+                {formatRupiah(total2PValue)}
+              </span>
+            </div>
+
+            {/* 3P Block */}
+            <div className="bg-slate-900 border-2 border-slate-950 text-white rounded-2xl p-4 shadow-md text-center flex flex-col justify-center relative overflow-hidden">
+              <span className="text-[11px] font-black text-amber-400 uppercase tracking-widest block mb-1">
+                ★ TOTAL VALUE 3P
+              </span>
+              <span className="text-2xl font-black font-mono tracking-wide leading-none block text-white mt-1">
+                {formatRupiah(total3PValue)}
+              </span>
             </div>
           </div>
 
